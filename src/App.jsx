@@ -5,17 +5,17 @@ import { Route, Routes } from "react-router-dom";
 
 import { Game } from "./components/pages/Game";
 import { Home } from "./components/pages/Home";
+import NotFound from "./components/pages/NotFound";
 
 function App() {
   return (
     <>
-      <Container>
-        <Header />
-      </Container>
+      <Header />
 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/game/:difficulty" element={<Game />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
