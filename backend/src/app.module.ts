@@ -4,23 +4,32 @@ import { AppController } from './app.controller.js';
 import { AppService } from './app.service.js';
 import { AuthModule } from './auth/auth.module.js';
 import { UsersModule } from './users/users.module.js';
+import { DataSource } from 'typeorm';
+import { User } from './users/entities/user.entity.js';
+import { ScoresModule } from './scores/scores.module.js';
 
 @Module({
   imports: [
     AuthModule,
     UsersModule,
     TypeOrmModule.forRoot({
-      type: 'mysql',
+      type: 'mariadb',
       host: 'localhost',
       port: 3306,
       username: 'root',
       password: 'root',
       database: 'test',
-      entities: [],
+      entities: [User],
       synchronize: true,
+      migrations: ["./migrations/*.*"],
+      migrationsTableName: "migrations",
     }),
+    ScoresModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+
+export class AppModule {
+  constructor(private dataSource: DataSource) {}
+}

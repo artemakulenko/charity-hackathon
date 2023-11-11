@@ -6,8 +6,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-    .setTitle('Cats example')
-    .setDescription('The cats API description')
+    .setTitle('API example')
+    .setDescription('The example API description')
     .setVersion('0.0.1')
     //.addTag('cats')
     .build();
@@ -19,4 +19,5 @@ async function bootstrap() {
     `Application is running on: ${await app.getUrl()}, http://localhost:3000`,
   );
 }
+
 bootstrap();
