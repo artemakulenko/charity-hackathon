@@ -1,0 +1,20 @@
+services:
+  back:
+    build: .
+    restart: on-failure:10
+    ports:
+      - "3000:3000"
+
+  db:
+    image: mariadb:11
+    restart: on-failure:10
+    env_file:
+      - .env
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./initdb:/docker-entrypoint-initdb.d:ro
+
+volumes:
+  db-data:
