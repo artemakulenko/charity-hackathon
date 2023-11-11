@@ -1,0 +1,21 @@
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(4, 20px);
+}
+
+.grid > div {
+  min-width: 25px;
+  background-color: grey;
+}

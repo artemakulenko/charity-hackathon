@@ -1,28 +1,28 @@
 :root {
-	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-	font-synthesis: none;
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-text-size-adjust: 100%;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
 }
 
 *,
 *::before,
 *::after {
-	margin: 0;
-	padding: 0;
-	box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
 }
 
 html {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 * {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 /* #root {
@@ -32,51 +32,51 @@ html {
 } */
 
 body {
-	background-color: #130f40;
+  background-color: #130f40;
 }
 
 .memory-game {
-	width: 640px;
-	height: 640px;
-	margin: auto;
-	display: flex;
-	flex-wrap: wrap;
-	perspective: 1000px;
+  width: 640px;
+  height: 640px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
 }
 
 .memory-card {
-	width: calc(25% - 10px);
-	height: calc(33.333% - 10px);
-	margin: 5px;
-	position: relative;
-	transform: scale(1);
-	transform-style: preserve-3d;
-	transition: transform 0.5s;
-	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-	cursor: pointer;
+  width: calc(25% - 10px);
+  height: calc(33.333% - 10px);
+  margin: 5px;
+  position: relative;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }
 
 .memory-card:active {
-	transform: scale(0.97);
-	transition: transform 0.2s;
+  transform: scale(0.97);
+  transition: transform 0.2s;
 }
 
 .memory-card.flip {
-	transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 .front-face,
 .back-face {
-	width: 100%;
-	height: 100%;
-	padding: 20px;
-	position: absolute;
-	border-radius: 5px;
-	background: #30336b;
-	backface-visibility: hidden;
-	object-fit: contain;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  position: absolute;
+  border-radius: 5px;
+  background: #30336b;
+  backface-visibility: hidden;
+  object-fit: contain;
 }
 
 .front-face {
-	transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
