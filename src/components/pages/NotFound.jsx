@@ -1,9 +1,14 @@
+import Container from "../UI/Container/Container";
+import styles from "./NotFound.module.css";
+
 const NotFound = () => {
   return (
-    <div>
-      <h1>404 - Page Not Found</h1>
-      <p>Упс! Такой страницы не существует.</p>
-    </div>
+    <Container>
+      <div className={styles.wrapper}>
+        <h1>404 - Page Not Found</h1>
+        <p>Упс! Такой страницы не существует.</p>
+      </div>
+    </Container>
   );
 };
 
