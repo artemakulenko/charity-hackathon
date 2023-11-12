@@ -1,4 +1,4 @@
 export class CreateUserDto {
   nickname: string;
-  password: string;
+  passwordHash: string;
 }

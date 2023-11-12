@@ -21,15 +21,14 @@ import { ScoresModule } from './scores/scores.module.js';
       database: 'test',
       entities: [User],
       synchronize: true,
-      migrations: ["./migrations/*.*"],
-      migrationsTableName: "migrations",
+      migrations: ['./migrations/*.*'],
+      migrationsTableName: 'migrations',
     }),
     ScoresModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-
 export class AppModule {
   constructor(private dataSource: DataSource) {}
 }
