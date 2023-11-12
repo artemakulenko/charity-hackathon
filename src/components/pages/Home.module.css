@@ -5,6 +5,33 @@
 	align-items: start;
 }
 
+@media (width <= 991px) {
+	.wrapper {
+		grid-template-columns: 1fr;
+		gap: 50px;
+	}
+
+	.grid {
+		width: 50% !important;
+		/* grid-auto-rows: 80px; */
+		margin: 0 auto;
+	}
+
+	.btnGrid {
+		flex-direction: column;
+	}
+
+	.grid > div {
+		aspect-ratio: unset;
+	}
+}
+
+@media (width <= 679px) {
+	.btnGrid {
+		flex-direction: column;
+	}
+}
+
 .btnGrid {
 	display: flex;
 	gap: 20px;

@@ -1,115 +1,115 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&family=Roboto:wght@400;500&display=swap");
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
 }
 
 *,
 *::before,
 *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
 }
 
 html {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
 
 body {
-  background-color: #f9f7f5;
-  color: #000;
+	background-color: #f9f7f5;
+	color: #000;
 }
 
 .bold {
-  font-weight: 600;
-  text-transform: uppercase;
+	font-weight: 600;
+	text-transform: uppercase;
 }
 .App {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+	position: absolute;
+	width: 100%;
+	height: 100%;
 }
 .App .score-container {
-  position: relative;
-  width: 100%;
-  text-align: center;
-  margin-bottom: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 20px 12px 0 12px;
+	position: relative;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	max-width: 720px;
+	margin: 0 auto;
+	padding: 20px 12px 0 12px;
 }
 
 .App .score-container .restart {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .App .score-container .score {
-  justify-content: center;
-  display: flex;
+	justify-content: center;
+	display: flex;
 }
 .App .score-container .score div {
-  padding: 8px;
+	padding: 8px;
 }
 
 .App .container {
-  /* border: 1px solid #dedede; */
-  padding: 12px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 1fr;
-  justify-items: center;
-  align-items: stretch;
-  gap: 1rem;
-  margin: 0 auto;
-  width: 100%;
-  height: 600px;
-  perspective: 100%;
-  max-width: 720px;
+	/* border: 1px solid #dedede; */
+	padding: 12px;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-auto-rows: 1fr;
+	justify-items: center;
+	align-items: stretch;
+	gap: 1rem;
+	margin: 0 auto;
+	width: 100%;
+	height: 600px;
+	perspective: 100%;
+	max-width: 720px;
 }
 
 /* card */
 .card {
-  width: 100%;
-  height: 100%;
-  border-radius: 4px;
-  box-shadow: 2px 2px 4px 4px #dedede;
-  transition: 0.3s;
-  transform-style: preserve-3d;
-  position: relative;
-  cursor: pointer;
+	width: 100%;
+	height: 100%;
+	border-radius: 4px;
+	box-shadow: 2px 2px 4px 4px #dedede;
+	transition: 0.3s;
+	transform-style: preserve-3d;
+	position: relative;
+	cursor: pointer;
 }
 .card img {
-  width: 95%;
-  height: 95%;
-  object-fit: contain;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
 }
 .card .card-face {
-  backface-visibility: hidden;
-  position: absolute;
-  width: 100%;
-  height: 100%;
+	backface-visibility: hidden;
+	position: absolute;
+	width: 100%;
+	height: 100%;
 }
 .card .card-face.card-back-face {
-  transform: rotateY(180deg);
+	transform: rotateY(180deg);
 }
 .card.is-flipped {
-  transform: rotateY(180deg);
+	transform: rotateY(180deg);
 }
 .card.is-inactive {
-  transform: rotateY(180deg);
+	transform: rotateY(180deg);
 }
