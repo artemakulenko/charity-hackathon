@@ -22,14 +22,29 @@ export class ScoresService {
     score.difficulty = difficulty;
     score.user = user;
 
-    return this.scoresRepository.save(score);
+    await this.scoresRepository.save(score);
+
+    return {
+      id: score.id,
+      moves: score.moves,
+      difficulty: score.difficulty,
+      createdAt: score.createdAt,
+      userId: user.id,
+    };
   }
 
   findAll() {
     return this.scoresRepository.find();
   }
 
-  findAllByUser(user: User) {
-    return this.scoresRepository.findBy({ user: user });
+  async findAllByUser(user: User) {
+    const values = await this.scoresRepository
+      .createQueryBuilder()
+      .leftJoin('score.user', 'user')
+      .andWhere('user.id = :userId', { userId: user.id })
+      // .select(["score.id", "score.moves", "score.difficulty", "score.createdAt"])
+      .execute();
+
+    return values;
   }
 }

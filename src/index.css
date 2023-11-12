@@ -29,7 +29,7 @@ html {
 
 body {
   background-color: #f9f7f5;
-  color: #dedede;
+  color: #000;
 }
 
 .bold {
@@ -41,40 +41,34 @@ body {
   width: 100%;
   height: 100%;
 }
-.App header {
+.App .score-container {
   position: relative;
   width: 100%;
   text-align: center;
   margin-bottom: 8px;
-}
-.App header > div {
-  font-size: 15px;
-  width: 324px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 720px;
   margin: 0 auto;
+  padding: 20px 12px 0 12px;
 }
-.App footer {
-  width: 360px;
-  position: relative;
-  margin: 0 auto;
-  padding: 10px 4px;
-  margin-top: 10px;
+
+.App .score-container .restart {
+  cursor: pointer;
 }
-.App footer .score {
+
+.App .score-container .score {
   justify-content: center;
   display: flex;
 }
-.App footer .score div {
+.App .score-container .score div {
   padding: 8px;
 }
-.App footer .restart {
-  display: flex;
-  justify-content: center;
-}
+
 .App .container {
   /* border: 1px solid #dedede; */
   padding: 12px;
-  box-shadow: 0 0 4px 4px #461d89;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 1fr;

@@ -54,7 +54,7 @@ export const Home = () => {
 						<Button value={20} style="primary" onClick={event => numDivsHandler(event)}>
 							Сложно
 						</Button>
-						<Button type="button" style="action" onClick={() => sendSubmit(`/game/${numOfDivs.length}`)}>
+						<Button type="button" style="action" onClick={() => sendSubmit(`/charity-hackathon/game/${numOfDivs.length}`)}>
 							Играть
 						</Button>
 					</div>
