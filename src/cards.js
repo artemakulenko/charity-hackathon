@@ -9,40 +9,32 @@ import photoFrame from "./assets/images/photo-frame.png";
 import playing from "./assets/images/playing.png";
 import socks from "./assets/images/socks.png";
 
-const cards = [
-	{ id: 1, name: "familyTree", image: familyTree },
-	{ id: 2, name: "familyTree", image: familyTree },
-
-	{ id: 3, name: "gift", image: gift },
-	{ id: 4, name: "gift", image: gift },
-
-	{ id: 5, name: "goShopping", image: goShopping },
-	{ id: 6, name: "goShopping", image: goShopping },
-
-	{ id: 7, name: "holdingHands", image: holdingHands },
-	{ id: 8, name: "holdingHands", image: holdingHands },
-
-	{ id: 9, name: "mother", image: mother },
-	{ id: 10, name: "mother", image: mother },
-
-	{ id: 11, name: "mother1", image: mother1 },
-	{ id: 12, name: "mother1", image: mother1 },
-
-	{ id: 13, name: "mother2", image: mother2 },
-	{ id: 14, name: "mother2", image: mother2 },
-
-	{ id: 15, name: "photoFrame", image: photoFrame },
-	{ id: 16, name: "photoFrame", image: photoFrame },
-
-	{ id: 17, name: "playing", image: playing },
-	{ id: 18, name: "playing", image: playing },
-
-	{ id: 19, name: "socks", image: socks },
-	{ id: 20, name: "socks", image: socks },
+export const uniqueCardsArray = [
+	{ type: "familyTree", image: familyTree },
+	{ type: "gift", image: gift },
+	{ type: "goShopping", image: goShopping },
+	{ type: "holdingHands", image: holdingHands },
+	{ type: "mother", image: mother },
+	{ type: "mother1", image: mother1 },
+	{ type: "mother2", image: mother2 },
+	{ type: "photoFrame", image: photoFrame },
+	{ type: "playing", image: playing },
+	{ type: "socks", image: socks },
 ];
 
-export const cardsData = cards.map(card => ({
+export const cardsData = uniqueCardsArray.map(card => ({
 	...card,
-	order: Math.floor(Math.random() * 20),
 	isFlipped: false,
 }));
+
+export function shuffleCards(array) {
+	const length = array.length;
+	for (let i = length; i > 0; i--) {
+		const randomIndex = Math.floor(Math.random() * i);
+		const currentIndex = i - 1;
+		const temp = array[currentIndex];
+		array[currentIndex] = array[randomIndex];
+		array[randomIndex] = temp;
+	}
+	return array;
+}

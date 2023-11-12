@@ -1,11 +1,12 @@
 import styles from "./Logo.module.css";
+import { Link } from "react-router-dom";
 
 function Logo() {
-  return (
-    <>
-      <h1>logo</h1>
-    </>
-  );
+	return (
+		<>
+			<Link to="/">logo</Link>
+		</>
+	);
 }
 
 export default Logo;

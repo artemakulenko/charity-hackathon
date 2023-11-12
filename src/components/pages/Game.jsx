@@ -1,69 +1,144 @@
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-import { useState } from "react";
-import { Card } from "../Card/Card";
-import { cardsData } from "../../cards";
+import { useEffect, useState, useRef } from "react";
+import Card from "../Card/Card";
+import { shuffleCards, uniqueCardsArray } from "../../cards";
 
 export const Game = () => {
-	// const { difficulty } = useParams();
-	// <div>Difficulty is {difficulty} </div>
-	let [cardsState, setCardsState] = useState(cardsData);
+	const { difficulty } = useParams();
+	console.log(difficulty);
 
-	// kep first card info
-	let [firstCard, setFirstCard] = useState(null);
-	// is it first click?
-	let [secondClick, setSecondClick] = useState(false);
-	// set flag to wait for 1500ms
-	let [wait, setWait] = useState(false);
+	const [cards, setCards] = useState(shuffleCards(uniqueCardsArray.slice(0, difficulty / 2).concat(uniqueCardsArray.slice(0, difficulty / 2))));
 
-	// functions
-	const checker = async card => {
-		if (card.name === firstCard.name) {
-			console.log("hellooo");
-			card["passed"] = true;
-			firstCard["passed"] = true;
-			changeCardStatusHandler(card);
-			changeCardStatusHandler(firstCard);
-		} else {
-			setWait(true);
-			setTimeout(() => {
-				changeCardStatusHandler(card);
-				changeCardStatusHandler(firstCard);
-				setWait(false);
-			}, 1500);
+	const [openCards, setOpenCards] = useState([]);
+	const [clearedCards, setClearedCards] = useState({});
+	const [shouldDisableAllCards, setShouldDisableAllCards] = useState(false);
+	const [moves, setMoves] = useState(0);
+	const [showModal, setShowModal] = useState(false);
+	const [bestScore, setBestScore] = useState(JSON.parse(localStorage.getItem("bestScore")) || Number.POSITIVE_INFINITY);
+	const timeout = useRef(null);
+
+	const disable = () => {
+		setShouldDisableAllCards(true);
+	};
+	const enable = () => {
+		setShouldDisableAllCards(false);
+	};
+
+	const checkCompletion = () => {
+		if (Object.keys(clearedCards).length === uniqueCardsArray.length) {
+			setShowModal(true);
+			const highScore = Math.min(moves, bestScore);
+			setBestScore(highScore);
+			localStorage.setItem("bestScore", highScore);
 		}
 	};
 
-	const changeCardStatusHandler = async clickedCard => {
-		if (!clickedCard.passed) clickedCard.isFlipped = !clickedCard.isFlipped;
-		let index = cardsState.findIndex(card => card.id === clickedCard.id);
-		let newState = [...cardsState];
-		newState.splice(index, 1, clickedCard);
-		await setCardsState(newState);
-	};
-
-	const handleClick = async (e, clickedCard) => {
-		if (wait) {
+	const evaluate = () => {
+		const [first, second] = openCards;
+		enable();
+		if (cards[first].type === cards[second].type) {
+			setClearedCards(prev => ({ ...prev, [cards[first].type]: true }));
+			setOpenCards([]);
 			return;
 		}
-		if (!secondClick) {
-			await setFirstCard(clickedCard);
-			await setSecondClick(true);
-			changeCardStatusHandler(clickedCard);
+		// This is to flip the cards back after 500ms duration
+		timeout.current = setTimeout(() => {
+			setOpenCards([]);
+		}, 500);
+	};
+	const handleCardClick = index => {
+		if (openCards.length === 1) {
+			setOpenCards(prev => [...prev, index]);
+			setMoves(moves => moves + 1);
+			disable();
 		} else {
-			await setSecondClick(false);
-			changeCardStatusHandler(clickedCard);
-			checker(clickedCard);
-			setFirstCard(null);
+			clearTimeout(timeout.current);
+			setOpenCards([index]);
 		}
+	};
+
+	useEffect(() => {
+		let timeout = null;
+		if (openCards.length === 2) {
+			timeout = setTimeout(evaluate, 300);
+		}
+		return () => {
+			clearTimeout(timeout);
+		};
+	}, [openCards]);
+
+	useEffect(() => {
+		checkCompletion();
+	}, [clearedCards]);
+	const checkIsFlipped = index => {
+		return openCards.includes(index);
+	};
+
+	const checkIsInactive = card => {
+		return Boolean(clearedCards[card.type]);
+	};
+
+	const handleRestart = () => {
+		setClearedCards({});
+		setOpenCards([]);
+		setShowModal(false);
+		setMoves(0);
+		setShouldDisableAllCards(false);
+		// set a shuffled deck of cards
+		setCards(shuffleCards(uniqueCardsArray.concat(uniqueCardsArray)));
 	};
 
 	return (
-		<section className="memory-game">
-			{cardsState?.map(card => {
-				return <Card key={card.id} card={card} onClick={e => handleClick(e, card)} />;
-			})}
-			{/* <Card card={card} onClick={} /> */}
-		</section>
+		<div className="App">
+			<header>
+				<h3>Play the Flip card game</h3>
+				<div>Select two cards with same content consequtively to make them vanish</div>
+			</header>
+			<div className="container">
+				{cards.map((card, index) => {
+					return <Card key={index} card={card} index={index} isDisabled={shouldDisableAllCards} isInactive={checkIsInactive(card)} isFlipped={checkIsFlipped(index)} onClick={handleCardClick} />;
+				})}
+			</div>
+			<footer>
+				<div className="score">
+					<div className="moves">
+						<span className="bold">Moves:</span> {moves}
+					</div>
+					{localStorage.getItem("bestScore") && (
+						<div className="high-score">
+							<span className="bold">Best Score:</span> {bestScore}
+						</div>
+					)}
+				</div>
+				<div className="restart">
+					<button onClick={handleRestart} color="primary">
+						Restart
+					</button>
+				</div>
+			</footer>
+			{/* <Dialog
+        open={showModal}
+        disableBackdropClick
+        disableEscapeKeyDown
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Hurray!!! You completed the challenge
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            You completed the game in {moves} moves. Your best score is{" "}
+            {bestScore} moves.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleRestart} color="primary">
+            Restart
+          </Button>
+        </DialogActions>
+      </Dialog> */}
+		</div>
 	);
 };

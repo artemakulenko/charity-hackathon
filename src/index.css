@@ -1,82 +1,118 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
 }
 
 *,
 *::before,
 *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
 }
 
 html {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
-
-/* #root {
-	height: 100vh;
-	display: flex;
-	background: #130f40;
-} */
 
 body {
-  background-color: #130f40;
+	background-color: #130f40;
+	color: #dedede;
 }
 
-.memory-game {
-  width: 640px;
-  height: 640px;
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-  perspective: 1000px;
+.bold {
+	font-weight: 600;
+	text-transform: uppercase;
+}
+.App {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+.App header {
+	position: relative;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 8px;
+}
+.App header > div {
+	font-size: 15px;
+	width: 324px;
+	text-align: center;
+	margin: 0 auto;
+}
+.App footer {
+	width: 360px;
+	position: relative;
+	margin: 0 auto;
+	padding: 10px 4px;
+	margin-top: 10px;
+}
+.App footer .score {
+	justify-content: center;
+	display: flex;
+}
+.App footer .score div {
+	padding: 8px;
+}
+.App footer .restart {
+	display: flex;
+	justify-content: center;
+}
+.App .container {
+	border: 1px solid #dedede;
+	padding: 12px;
+	box-shadow: 0 0 4px 4px #dedede;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	justify-items: center;
+	align-items: stretch;
+	gap: 1rem;
+	margin: 0 auto;
+	width: 360px;
+	height: 300px;
+	perspective: 100%;
+	max-width: 720px;
 }
 
-.memory-card {
-  width: calc(25% - 10px);
-  height: calc(33.333% - 10px);
-  margin: 5px;
-  position: relative;
-  transform: scale(1);
-  transform-style: preserve-3d;
-  transition: transform 0.5s;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
+/* card */
+.card {
+	width: 100%;
+	height: 100%;
+	border-radius: 4px;
+	box-shadow: 2px 2px 4px 4px #dedede;
+	transition: 0.3s;
+	transform-style: preserve-3d;
+	position: relative;
+	cursor: pointer;
 }
-
-.memory-card:active {
-  transform: scale(0.97);
-  transition: transform 0.2s;
+.card img {
+	width: 95%;
+	height: 95%;
 }
-
-.memory-card.flip {
-  transform: rotateY(180deg);
+.card .card-face {
+	backface-visibility: hidden;
+	position: absolute;
+	width: 100%;
+	height: 100%;
 }
-
-.front-face,
-.back-face {
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-  position: absolute;
-  border-radius: 5px;
-  background: #30336b;
-  backface-visibility: hidden;
-  object-fit: contain;
+.card .card-face.card-back-face {
+	transform: rotateY(180deg);
 }
-
-.front-face {
-  transform: rotateY(180deg);
+.card.is-flipped {
+	transform: rotateY(180deg);
+}
+.card.is-inactive {
+	opacity: 0;
 }
