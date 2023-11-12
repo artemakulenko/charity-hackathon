@@ -29,33 +29,34 @@ export const Home = () => {
       <h1>Выберете сложность</h1>
       <div className={styles.wrapper}>
         <div className={styles.actions}>
-          <button
+          <Button
             value={12}
-            // onClick={() => sendSubmit(/game/easy)}
+            style="primary"
             onClick={(event) => numDivsHandler(event)}
           >
             Easy
-          </button>
-          <button
+          </Button>
+          <Button
             value={16}
-            // onClick={() => sendSubmit(/game/medium)}
+            style="primary"
             onClick={(event) => numDivsHandler(event)}
           >
             Medium
-          </button>
-          <button
+          </Button>
+          <Button
             value={20}
-            // onClick={() => sendSubmit(/game/hard)}
+            style="primary"
             onClick={(event) => numDivsHandler(event)}
           >
             Hard
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
+            style="action"
             onClick={() => sendSubmit(`/game/${numOfDivs.length}`)}
           >
             Играть
-          </button>
+          </Button>
         </div>
 
         <div
