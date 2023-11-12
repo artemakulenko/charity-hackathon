@@ -15,12 +15,16 @@ export class UsersService {
     return this.usersRepository.find();
   }
 
+  findById(id: number): Promise<User | null> {
+    return this.usersRepository.findOneBy({ id: id });
+  }
+
   findOne(nickname: string): Promise<User | null> {
     return this.usersRepository.findOneBy({ nickname: nickname });
   }
 
-  async create(dto: CreateUserDto) {
-    const { nickname, passwordHash } = dto;
+  async create(createUserDto: CreateUserDto) {
+    const { nickname, passwordHash } = createUserDto;
 
     const user = new User();
     user.nickname = nickname;

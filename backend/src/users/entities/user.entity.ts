@@ -3,7 +3,9 @@ import {
   CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
+  OneToMany,
 } from 'typeorm';
+import { Score } from '../../scores/entities/score.entity.js';
 
 @Entity()
 export class User {
@@ -13,15 +15,22 @@ export class User {
   @Column({
     unique: true,
     nullable: false,
+    length: 256,
   })
   nickname: string;
 
   @Column({
-    nullable: true,
-    default: null,
+    unique: false,
+    nullable: false,
+    length: 256,
   })
   passwordHash: string;
 
-  @CreateDateColumn()
-  createdAt: string;
+  @CreateDateColumn({
+    nullable: false,
+  })
+  createdAt: Date;
+
+  @OneToMany('Score', 'user')
+  scores: Score[];
 }

@@ -1,1 +1,4 @@
-export class CreateScoreDto {}
+export class CreateScoreDto {
+  moves: number;
+  difficulty: number;
+}

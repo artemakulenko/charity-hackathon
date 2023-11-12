@@ -7,6 +7,7 @@ import { UsersModule } from './users/users.module.js';
 import { DataSource } from 'typeorm';
 import { User } from './users/entities/user.entity.js';
 import { ScoresModule } from './scores/scores.module.js';
+import { Score } from './scores/entities/score.entity.js';
 
 @Module({
   imports: [
@@ -19,7 +20,8 @@ import { ScoresModule } from './scores/scores.module.js';
       username: 'root',
       password: 'root',
       database: 'test',
-      entities: [User],
+      entities: [User, Score],
+      autoLoadEntities: true,
       synchronize: true,
       migrations: ['./migrations/*.*'],
       migrationsTableName: 'migrations',
