@@ -5,8 +5,8 @@ const NotFound = () => {
   return (
     <Container>
       <div className={styles.wrapper}>
-        <h1>404 - Page Not Found</h1>
-        <p>Упс! Такой страницы не существует.</p>
+        <h1 className={styles.heading}>404 - Page Not Found</h1>
+        <p className={styles.message}>Упс! Такой страницы не существует.</p>
       </div>
     </Container>
   );
