@@ -15,7 +15,7 @@ import { Score } from './scores/entities/score.entity.js';
     UsersModule,
     TypeOrmModule.forRoot({
       type: 'mariadb',
-      host: 'localhost',
+      host: 'db',
       port: 3306,
       username: 'root',
       password: 'root',
