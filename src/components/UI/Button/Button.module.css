@@ -1,30 +1,29 @@
 button {
-  appearance: none;
-  border-style: none;
-  font-family: inherit;
-  box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
-    rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+	appearance: none;
+	border-style: none;
+	font-family: inherit;
+	box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.05);
+	cursor: pointer;
+	font-family: "Roboto";
+	padding: 15px 45px;
 }
 
 .action {
-  margin-top: 40px;
-  background-color: #271433;
-  color: #fff;
-  border-radius: 10px;
-  padding: 10px 45px;
+	background-color: #497cff;
+	color: #fff;
+	border-radius: 10px;
 }
 
 .action:hover {
-  background-color: #48235f;
+	background-color: #7fa1f8;
 }
 
 .primary {
-  background-color: #eeeae6;
-  color: #000;
-  border-radius: 10px;
-  padding: 10px 35px;
+	background-color: #eeeae6;
+	color: #000;
+	border-radius: 10px;
 }
 
 .primary:hover {
-  background-color: #c8c5c2;
+	background-color: #c8c5c2;
 }

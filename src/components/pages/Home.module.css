@@ -1,6 +1,13 @@
 .wrapper {
 	display: grid;
 	grid-template-columns: 2fr 1fr;
+	margin-top: 100px;
+	align-items: start;
+}
+
+.btnGrid {
+	display: flex;
+	gap: 20px;
 }
 
 .actions {
@@ -10,21 +17,62 @@
 	align-items: flex-start;
 }
 
+.description {
+	color: #271433;
+	font-family: Roboto;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 120%;
+}
+
 .grid {
 	display: grid;
 	gap: 10px;
 	width: 100%;
 }
 
+.title {
+	color: #271433;
+	font-family: Montserrat;
+	font-size: 50px;
+	font-style: normal;
+	font-weight: 900;
+	line-height: 120%; /* 48px */
+	margin-bottom: 20px;
+}
+
+h2 {
+	color: #271433;
+	font-family: Roboto;
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 120%; /* 28.8px */
+}
+
 .easy {
 	grid-template-columns: repeat(3, 1fr);
 }
+.easy div:nth-child(6),
+.easy div:nth-child(10) {
+	background-color: #497cff;
+}
+
 .medium {
 	grid-template-columns: repeat(4, 1fr);
+}
+.medium div:nth-child(3),
+.medium div:nth-child(13) {
+	background-color: #497cff;
 }
 
 .hard {
 	grid-template-columns: repeat(4, 5fr);
+}
+.hard div:nth-child(4),
+.hard div:nth-child(14) {
+	background-color: #497cff;
 }
 
 .grid > div {
