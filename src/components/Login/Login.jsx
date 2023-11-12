@@ -1,7 +1,7 @@
 import styles from "./Login.module.css";
 
 function Login() {
-  return <p>Login/sign up</p>;
+  return <p className={styles.login}>Войти</p>;
 }
 
 export default Login;
