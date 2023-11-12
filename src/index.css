@@ -70,18 +70,18 @@ body {
 	justify-content: center;
 }
 .App .container {
-	border: 1px solid #dedede;
+	/* border: 1px solid #dedede; */
 	padding: 12px;
-	box-shadow: 0 0 4px 4px #dedede;
+	box-shadow: 0 0 4px 4px #461d89;
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-	grid-template-rows: repeat(3, 1fr);
+	grid-auto-rows: 1fr;
 	justify-items: center;
 	align-items: stretch;
 	gap: 1rem;
 	margin: 0 auto;
-	width: 360px;
-	height: 300px;
+	width: 100%;
+	height: 600px;
 	perspective: 100%;
 	max-width: 720px;
 }
@@ -100,6 +100,7 @@ body {
 .card img {
 	width: 95%;
 	height: 95%;
+	object-fit: contain;
 }
 .card .card-face {
 	backface-visibility: hidden;
@@ -114,5 +115,5 @@ body {
 	transform: rotateY(180deg);
 }
 .card.is-inactive {
-	opacity: 0;
+	transform: rotateY(180deg);
 }

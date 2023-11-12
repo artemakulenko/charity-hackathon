@@ -27,7 +27,7 @@ export const Home = () => {
 			<div className={styles.wrapper}>
 				<div className={styles.actions}>
 					<button
-						value={12}
+						value={6}
 						// onClick={() => sendSubmit(/game/easy)}
 						onClick={event => numDivsHandler(event)}
 					>

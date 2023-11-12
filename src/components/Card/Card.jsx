@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import gift from "../../assets/images/gift.png";
+import heart from "../../assets/images/heart.png";
 import styles from "./Card.module.css";
 
 const Card = ({ onClick, card, index, isInactive, isFlipped, isDisabled }) => {
@@ -16,10 +16,10 @@ const Card = ({ onClick, card, index, isInactive, isFlipped, isDisabled }) => {
 			onClick={handleClick}
 		>
 			<div className="card-face card-font-face">
-				<img src={gift} alt="backside" />
+				<img src={heart} alt="backside" />
 			</div>
 			<div className="card-face card-back-face">
-				<img src={card.image} alt="pokeball" />
+				<img src={card.image} alt="card" />
 			</div>
 		</div>
 	);

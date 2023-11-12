@@ -26,7 +26,7 @@ export const Game = () => {
 	};
 
 	const checkCompletion = () => {
-		if (Object.keys(clearedCards).length === uniqueCardsArray.length) {
+		if (Object.keys(clearedCards).length === difficulty / 2) {
 			setShowModal(true);
 			const highScore = Math.min(moves, bestScore);
 			setBestScore(highScore);
@@ -86,7 +86,7 @@ export const Game = () => {
 		setMoves(0);
 		setShouldDisableAllCards(false);
 		// set a shuffled deck of cards
-		setCards(shuffleCards(uniqueCardsArray.concat(uniqueCardsArray)));
+		setCards(shuffleCards(uniqueCardsArray.slice(0, difficulty / 2).concat(uniqueCardsArray.slice(0, difficulty / 2))));
 	};
 
 	return (
@@ -139,6 +139,9 @@ export const Game = () => {
           </Button>
         </DialogActions>
       </Dialog> */}
+			{/* <div>
+				You completed the game in {moves} moves. Your best score is {bestScore} moves.
+			</div> */}
 		</div>
 	);
 };
