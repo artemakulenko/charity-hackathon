@@ -1,0 +1,30 @@
+button {
+  appearance: none;
+  border-style: none;
+  font-family: inherit;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+}
+
+.action {
+  margin-top: 40px;
+  background-color: #271433;
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px 45px;
+}
+
+.action:hover {
+  background-color: #48235f;
+}
+
+.primary {
+  background-color: #eeeae6;
+  color: #000;
+  border-radius: 10px;
+  padding: 10px 35px;
+}
+
+.primary:hover {
+  background-color: #c8c5c2;
+}
