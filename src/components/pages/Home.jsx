@@ -27,7 +27,7 @@ export const Home = () => {
 			<div className={styles.wrapper}>
 				<div className={styles.actions}>
 					<button
-						value={6}
+						value={12}
 						// onClick={() => sendSubmit(/game/easy)}
 						onClick={event => numDivsHandler(event)}
 					>
@@ -51,7 +51,14 @@ export const Home = () => {
 						Играть
 					</button>
 				</div>
-				<div className={styles.grid}>
+
+				<div
+					className={`
+            ${styles.grid} 
+            ${numOfDivs.length === 12 && styles.easy} 
+            ${numOfDivs.length === 16 && styles.medium} 
+            ${numOfDivs.length === 20 && styles.hard}`}
+				>
 					{numOfDivs.map(el => (
 						<div key={el}></div>
 					))}
