@@ -12,8 +12,8 @@ function App() {
 			<Header />
 
 			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/game/:difficulty" element={<Game />} />
+				<Route path="/charity-hackathon/" element={<Home />} />
+				<Route path="/charity-hackathon/game/:difficulty" element={<Game />} />
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</>
