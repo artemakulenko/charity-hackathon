@@ -53,7 +53,7 @@ export const Home = () => {
           <Button
             type="button"
             style="action"
-            onClick={() => sendSubmit(`/game/${numOfDivs.length}`)}
+            onClick={() => sendSubmit(`/charity-hackathon/game/${numOfDivs.length}`)}
           >
             Играть
           </Button>

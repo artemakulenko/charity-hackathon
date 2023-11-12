@@ -7,7 +7,7 @@ function Logo() {
     <>
       <div className={styles.wrapper}>
         <Diamond className={styles.icon} />
-        <Link to="/" className={styles.name}>
+        <Link to="/charity-hackathon/" className={styles.name}>
           Homebound Hearts
         </Link>
       </div>
